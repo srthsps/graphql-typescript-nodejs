@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Post_1 = require("./entities/Post");
 const Students_1 = require("./entities/Students");
+const User_1 = require("./entities/User");
 const constants_1 = require("./constants");
 const path_1 = __importDefault(require("path"));
 const config = {
@@ -13,7 +14,7 @@ const config = {
         path: path_1.default.join(__dirname, "./migrations"),
         glob: '!(*.d).{js,ts}',
     },
-    entities: [Post_1.Post, Students_1.Students],
+    entities: [Post_1.Post, Students_1.Students, User_1.User],
     dbName: "lireddit",
     type: "postgresql",
     user: 'dominon',

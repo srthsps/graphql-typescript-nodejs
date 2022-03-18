@@ -1,6 +1,7 @@
 import { Options } from '@mikro-orm/core';
 import { Post } from "./entities/Post";
 import { Students } from './entities/Students'
+import { User } from './entities/User'
 import { __prod__ } from "./constants";
 import path from 'path';
 
@@ -10,7 +11,7 @@ const config: Options = {
         path: path.join(__dirname,"./migrations"),
         glob: '!(*.d).{js,ts}',
     },
-    entities: [Post,Students],
+    entities: [Post,Students,User],
     dbName: "lireddit",
     type: "postgresql",
     user:'dominon',
