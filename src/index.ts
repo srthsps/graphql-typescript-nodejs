@@ -10,6 +10,7 @@ import { HelloResolver } from "./resolvers/hello";
 import { PostResolver } from "./resolvers/post";
 // import { Students } from './entities/Students';
 import { StudentResolver } from './resolvers/student';
+import { UserResolver } from './resolvers/user';
 // import { ApolloServerPluginLandingPageGraphQLPlayground} from "apollo-server-core";
 
 
@@ -23,7 +24,7 @@ const main = async () => {
 
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
-            resolvers: [HelloResolver,PostResolver,StudentResolver],
+            resolvers: [HelloResolver,PostResolver,StudentResolver,UserResolver],
             validate: false,
             // plugins: [ApolloServerPluginLandingPageGraphQLPlayground]
         }),

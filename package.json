@@ -27,6 +27,7 @@
     "@mikro-orm/postgresql": "^5.0.5",
     "apollo-server-core": "^3.6.3",
     "apollo-server-express": "^3.6.3",
+    "argon2": "^0.28.5",
     "express": "^4.17.3",
     "graphql": "^15.7.2",
     "nodemon": "^2.0.15",
