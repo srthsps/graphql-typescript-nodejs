@@ -17,6 +17,7 @@ export class Students {
   @Property({ type:"text" })
   name!: string;
 
+  @Field(() => Int)
   @Property({ type: "number" })
   score: number;
 

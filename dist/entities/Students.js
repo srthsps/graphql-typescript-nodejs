@@ -33,6 +33,7 @@ __decorate([
     __metadata("design:type", String)
 ], Students.prototype, "name", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(() => type_graphql_1.Int),
     (0, core_1.Property)({ type: "number" }),
     __metadata("design:type", Number)
 ], Students.prototype, "score", void 0);

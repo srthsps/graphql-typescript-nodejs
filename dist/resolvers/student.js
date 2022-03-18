@@ -19,6 +19,34 @@ let StudentResolver = class StudentResolver {
     students(ctx) {
         return ctx.em.find(Students_1.Students, {});
     }
+    student(_id, { em }) {
+        return em.findOne(Students_1.Students, { _id });
+    }
+    async createStudent(name, score, { em }) {
+        const student = em.create(Students_1.Students, { name, score });
+        await em.persistAndFlush(student);
+        return student;
+    }
+    async updateStudent(_id, name, { em }) {
+        const student = await em.findOne(Students_1.Students, { _id });
+        if (!student) {
+            return null;
+        }
+        if (typeof name !== 'undefined') {
+            student.name = name;
+            await em.persistAndFlush(student);
+        }
+        return student;
+    }
+    async deleteStudent(_id, { em }) {
+        try {
+            await em.nativeDelete(Students_1.Students, { _id });
+        }
+        catch (_a) {
+            return false;
+        }
+        return true;
+    }
 };
 __decorate([
     (0, type_graphql_1.Query)(() => [Students_1.Students]),
@@ -27,6 +55,40 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], StudentResolver.prototype, "students", null);
+__decorate([
+    (0, type_graphql_1.Query)(() => Students_1.Students, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)('id', () => type_graphql_1.Int)),
+    __param(1, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", Promise)
+], StudentResolver.prototype, "student", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => Students_1.Students),
+    __param(0, (0, type_graphql_1.Arg)('name', () => String)),
+    __param(1, (0, type_graphql_1.Arg)('score', () => type_graphql_1.Int)),
+    __param(2, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Number, Object]),
+    __metadata("design:returntype", Promise)
+], StudentResolver.prototype, "createStudent", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => Students_1.Students, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)('id', () => type_graphql_1.Int)),
+    __param(1, (0, type_graphql_1.Arg)('name', () => String)),
+    __param(2, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, String, Object]),
+    __metadata("design:returntype", Promise)
+], StudentResolver.prototype, "updateStudent", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => Boolean),
+    __param(0, (0, type_graphql_1.Arg)('id', () => type_graphql_1.Int)),
+    __param(1, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", Promise)
+], StudentResolver.prototype, "deleteStudent", null);
 StudentResolver = __decorate([
     (0, type_graphql_1.Resolver)()
 ], StudentResolver);
